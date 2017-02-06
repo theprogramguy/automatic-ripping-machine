@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.4.0 
+ - Added udev logging from arm_wrapper.sh into /opt/arm/logs/udev.log to diagnose udev issues, and to log double udev calls for a single insert
+ - Added Flocker support for locking file to prevent a double rip getting started
+ - Added small program drivestatus.bin to identify if the tray is open or closed and if media is ready or not before running script (prevents huge log entries on disc ejects)
+ - Moved Disc identification to a function inside identify.sh
+ - Added Disc identification even if ARM_CHECK_UDF is set to false
+ - Changed logfile redirection to be more uniform and efficient 
+ - Added Kodi support in config file
+ - Added Kodi .nomedia creation in extras folder
+ - Added Kodi notification support of ripping status
+
 ## v1.3.0
  - Get Title for DVD and Blu-Rays so that media servesr can identify them easily.
  - Determine if video is Movie or TV-Show from OMDB API query so that different actions can be taken (TV shows usually require manual episode identification)

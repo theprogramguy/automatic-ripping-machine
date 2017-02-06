@@ -103,6 +103,19 @@ HB_ARGS="--subtitle scan -F"
 # Set this setting to true, to enable Plex Extras support
 PLEX_SUPPORT=false
 
+
+#####################
+## Enable KODI Use ##
+#####################
+
+
+KODI_SUPPORT=true
+KODI_NOTIFY=true
+#Comma seperated values, supports ipv4,v6,avahi(zeroconf), IP
+KODI_CLIENTS="localhost,player1.local"
+
+
+
 #####################
 ## Emby Parameters ##
 #####################
