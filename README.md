@@ -24,7 +24,7 @@ See: https://b3n.org/automatic-ripping-machine
   - If data (Blu-Ray, DVD, or CD) - make an ISO backup
 - Headless, designed to be run from a server
 - Can rip from multiple-optical drives in parallel
-
+- Added ability to autoupdate key
 
 ## Requirements
 
@@ -40,31 +40,19 @@ If you have a  new DVD drive that you haven't used before, some require setting 
        sudo regionset /dev/sr0
 
     sudo apt-get install git
-    sudo add-apt-repository ppa:heyarje/makemkv-beta
-    sudo add-apt-repository ppa:stebbins/handbrake-releases
-    sudo add-apt-repository ppa:mc3man/xerus-media
-    sudo apt update
-    sudo apt install makemkv-bin makemkv-oss
-    sudo apt install handbrake-cli libavcodec-extra
-    sudo apt install abcde flac imagemagick glyrc cdparanoia
-    sudo apt install at
-    sudo apt install python3 python3-pip
-    sudo apt-get install libdvd-pkg
-    sudo dpkg-reconfigure libdvd-pkg
     sudo su
     cd /opt
     git clone https://github.com/ahnooie/automatic-ripping-machine.git arm
     cd arm
-    pip3 install -r requirements.txt
-    ln -s /opt/arm/51-automedia.rules /lib/udev/rules.d/
-    ln -s /opt/arm/.abcde.conf /root/
-    cp config.sample config
+    make
+    
 
 - Edit your "config" file to determine what options you'd like to use
 - To rip Blu-Rays after the MakeMKV trial is up you will need to purchase a license key or while MakeMKV is in BETA you can get a free key (which you will need to update from time to time) here:  https://www.makemkv.com/forum2/viewtopic.php?f=5&t=1053 and create /root/.MakeMKV/settings.conf with the contents:
 
         app_Key = "insertlicensekeyhere" 
 
+- To enable automatic beta key update, run install-beta.sh, to disable later, if you buy a license, run uninstall-beta.sh
 
 Optionally if you want something more stable than master you can download the latest release from the releases page.
 

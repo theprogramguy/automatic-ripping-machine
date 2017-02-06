@@ -4,6 +4,8 @@
  - Added udev logging from arm_wrapper.sh into /opt/arm/logs/udev.log to diagnose udev issues, and to log double udev calls for a single insert
  - Added Flocker support for locking file to prevent a double rip getting started
  - Added small program drivestatus.bin to identify if the tray is open or closed and if media is ready or not before running script (prevents huge log entries on disc ejects)
+ - Added 'nice' for all transcoding operations
+ - Added makefile config to enable quick setup, just gitclone and make
  - Moved Disc identification to a function inside identify.sh
  - Added Disc identification even if ARM_CHECK_UDF is set to false
  - Changed logfile redirection to be more uniform and efficient 

@@ -10,3 +10,5 @@ drivemake: drivestatus.c
 	sudo [ -f /opt/arm/config ] && echo "Config Already Exists" || sudo cp /opt/arm/config.sample /opt/arm/config
 	sudo [ -f /lib/udev/rules.d/51-automedia.rules ] && echo "udev rules already copied" || sudo ln -s /opt/arm/51-automedia.rules /lib/udev/rules.d/
 	sudo [ -f /root/.abcde.conf ] && echo "abcde config already copied" || sudo ln -s /opt/arm/.abcde.conf /root/
+	sudo ln /opt/arm/0update-bin.sh /etc/cron.weekly/ || true
+	whiptail --yesno "Set up beta key updater?" 20 60 && /opt/arm/install-beta.sh || true
