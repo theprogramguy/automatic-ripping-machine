@@ -7,7 +7,7 @@ exec >> "$LOG"
 exec 2>&1
 
 TIMESTAMP=$(date '+%Y%m%d_%H%M%S');
-DEST="/mnt/media/ARM/Media/Data/${TIMESTAMP}_${ID_FS_LABEL}"
+DEST="${DATA_DIR}${TIMESTAMP}_${ID_FS_LABEL}"
 mkdir -p "$DEST"
 FILENAME=${ID_FS_LABEL}_disc.iso
 
