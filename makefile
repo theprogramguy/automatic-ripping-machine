@@ -3,7 +3,7 @@ drivemake: drivestatus.c
 	sudo add-apt-repository ppa:stebbins/handbrake-releases -y
 	sudo add-apt-repository ppa:mc3man/xerus-media -y
 	sudo apt-get update || true
-	sudo apt install makemkv-bin makemkv-oss handbrake-cli libavcodec-extra abcde flac imagemagick glyrc cdparanoia abcde flac imagemagick glyrc cdparanoia at python3 python3-pip libdvd-pkg cifs-utils regionset -y
+	sudo apt install makemkv-bin makemkv-oss handbrake-cli libavcodec-extra abcde flac imagemagick glyrc cdparanoia abcde flac imagemagick glyrc cdparanoia at python3 python3-pip libdvd-pkg cifs-utils regionset xmlstarlet -y
 	sudo pip3 install -r requirements.txt
 	sudo gcc drivestatus.c -o drivestatus.bin
 	sudo dpkg-reconfigure libdvd-pkg

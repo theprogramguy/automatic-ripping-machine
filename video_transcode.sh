@@ -77,7 +77,7 @@ TIMESTAMP=$5
 		echo "Transcoding DVD main feature only." 
 		# echo "$HANDBRAKE_CLI -i $DEVNAME -o \"${DEST}/${LABEL}.${DEST_EXT}\" --main-feature --preset="${HB_PRESET}" --subtitle scan -F 2" >> $LOG
 		# shellcheck disable=SC2086
-        nice $HANDBRAKE_CLI -i "$DEVNAME" -o "${DEST}/${LABEL}.${DEST_EXT}" --main-feature --preset="${HB_PRESET}" $HB_ARGS 
+        	nice $HANDBRAKE_CLI -i "$DEVNAME" -o "${DEST}/${LABEL}.${DEST_EXT}" --main-feature --preset="${HB_PRESET}" $HB_ARGS 
 		#2>> "$LOG"
 		eject "$DEVNAME"
 	else
@@ -92,7 +92,7 @@ TIMESTAMP=$5
 
 			echo "Transcoding file $FILE" 
 				# shellcheck disable=SC2086
-                nice $HANDBRAKE_CLI -i "$SRC/$FILE" -o "$DEST/$filename.$DEST_EXT" --preset="$HB_PRESET" $HB_ARGS 
+                	nice $HANDBRAKE_CLI -i "$SRC/$FILE" -o "$DEST/$filename.$DEST_EXT" --preset="$HB_PRESET" $HB_ARGS 
 			rm "$SRC/$FILE"
        		done
 		rmdir "$SRC"

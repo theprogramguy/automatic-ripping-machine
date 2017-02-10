@@ -12,6 +12,9 @@ VIDEO_TITLE=""
 HAS_NICE_TITLE=""
 VIDEO_TYPE=""
 VTYPE=""
+MEDIA_TYPE="ERROR"
+FS_TYPE="CD"
+
 
 ### FUNCTIONS ###
 ID_VIDEO(){
@@ -47,7 +50,9 @@ ID_VIDEO(){
 	else
 		VIDEO_TYPE="unknown"
 	fi
-
+	if [ echo $VIDEO_TITLE | grep -i "SEASON" ]; then
+		VIDEO_TYPE="tv"
+	fi
 }
 
 
@@ -55,13 +60,14 @@ LOCKFILE="${DEVNAME///}.lock"
 (
 	####### LOCK WITH $LOCKFILE, IF LOCKED, EXIT ####### 
         flock -n 9 || exit
-
+	echo "Starting identify.sh ${DEVNAME}" >> /opt/arm/logs/identify.log
+	/opt/arm/drivestatus.bin ${DEVNAME} || exit
 	if [ -z "$1" ]; then
 		export ARM_CONFIG="/opt/arm/config"
 	else
 		export ARM_CONFIG=$1
 	fi
-	sleep 10
+	sleep 6
 
 	echo "$ARM_CONFIG"
 
@@ -76,10 +82,9 @@ LOCKFILE="${DEVNAME///}.lock"
 
 	exec >> "$LOG"
 	exec 2>&1
-	echo "#######################################################
-	################# NEW LOG ENTRY #######################
-	#######################################################
-	"
+	echo "#######################################################"
+	echo "################# NEW LOG ENTRY #######################"
+	echo "#######################################################"
 	##CHECK CD TRAY##
 	if [ ! -f "/opt/arm/drivestatus.bin" ]; then
 		echo "/usr/bin/gcc /opt/arm/drivestatus.c -o /opt/arm/drivestatus.bin" | at now
@@ -131,6 +136,47 @@ LOCKFILE="${DEVNAME///}.lock"
 	# Set Home to home folder of user that is setup to run MakeMKV
 	export HOME="/root/"
 
+	
+
+	if   [ "$ID_CDROM_MEDIA_BD" == "1" ]; then
+		MEDIA_TYPE="BLURAY"
+	elif [ "$ID_CDROM_MEDIA_DVD" == "1" ]; then
+		MEDIA_TYPE="DVD"
+	elif [ "$ID_CDROM_MEDIA_CD" == "1" ]; then
+		MEDIA_TYPE="CD"
+	else
+		MEDIA_TYPE="ERROR"
+	fi
+
+	if   [ "$ID_FS_TYPE" == "udf" ]; then
+		FS_TYPE="UDF-DATA"
+	elif [ "$ID_FS_TYPE" == "iso9660" ]; then
+		MEDIA_TYPE="ISO-DATA"
+	elif [ $ID_CDROM_MEDIA_TRACK_COUNT_AUDIO > 0 ]; then
+		FS_TYPE="AUDIO"
+	else
+		FS_TYPE="ERROR"
+	fi
+	echo  "$MEDIA_TYPE is $FS_TYPE" 
+
+	## some OLD commercial dvds and home burnt DVDs use iso9660 ?!?
+exit
+	
+	##lets handle the easiest ones first
+	case $FS_TYPE in
+		AUDIO)
+			abcde -c /opt/arm/.abcde.conf -N -x -d "$DEVNAME" 2>>/dev/null
+			echo "ABCDE finished"
+			exit
+		;;
+
+
+
+	esac
+
+	
+
+
 	if [ "$ID_FS_TYPE" == "udf" ]; then
 		echo "identified udf"
 		echo "found ${ID_FS_LABEL} on ${DEVNAME}"
@@ -157,7 +203,7 @@ LOCKFILE="${DEVNAME///}.lock"
 
 				umount "/mnt/$DEVNAME"
 				if [ "$KODI_NOTIFY" == true ]; then /opt/arm/kodi-notify.py --hosts=$KODI_CLIENTS --msg="Rip Started,$VIDEO_TITLE started." 2>&1; fi
-				/opt/arm/video_rip.sh "$VIDEO_TITLE" "$HAS_NICE_TITLE" "$VIDEO_TYPE" "$LOG"
+				/opt/arm/queue_video_rip.sh "$LOG" "$DEVNAME" "$VIDEO_TITLE" "$HAS_NICE_TITLE" "$VIDEO_TYPE"
 			else
 				umount "/mnt/$DEVNAME"
 				echo "identified udf as data" 
@@ -182,7 +228,7 @@ LOCKFILE="${DEVNAME///}.lock"
 
 	elif (("$ID_CDROM_MEDIA_TRACK_COUNT_AUDIO" > 0 )); then
 		echo "identified audio" 
-		abcde -d "$DEVNAME"
+		
 
 	elif [ "$ID_FS_TYPE" == "iso9660" ]; then
 		echo "identified data" 
@@ -192,7 +238,7 @@ LOCKFILE="${DEVNAME///}.lock"
 		echo "unable to identify"
 		echo "$ID_CDROM_MEDIA_TRACK_COUNT_AUDIO" 
 		echo "$ID_FS_TYPE" 
-		eject "$DEVNAME"
+		#eject "$DEVNAME"
 	fi
 
 

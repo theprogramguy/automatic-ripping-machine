@@ -32,6 +32,10 @@ RAWPATH="/mnt/media/ARM/raw/"
 # Destination for final file.  Only used for movies that are positively identified
 MEDIA_DIR="/mnt/media/ARM/Media/Movies/"
 
+# Path to DataRip directory
+DATA_DIR="/mnt/media/ARM/Media/Data/"
+
+
 # Path to directory to hold log files
 # Make sure to include trailing /
 LOGPATH="/opt/arm/logs/"

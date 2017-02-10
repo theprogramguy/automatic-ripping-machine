@@ -1,0 +1,31 @@
+# xmcd CD database file
+#
+# Track frame offsets:
+#	150
+#	16207
+#	29742
+#	47250
+#	63222
+#
+# Disc length: 904 seconds
+#
+# Submitted via: cddb-tool 0.4.7
+#
+#blues,classical,country,data,folk,jazz,newage,reggae,rock,soundtrack,misc
+#CATEGORY=misc
+DISCID=34038605
+DTITLE=Unknown Artist / Unknown Album
+DYEAR=
+DGENRE=
+TTITLE0=Track 1
+TTITLE1=Track 2
+TTITLE2=Track 3
+TTITLE3=Track 4
+TTITLE4=Track 5
+EXTD=
+EXTT0=
+EXTT1=
+EXTT2=
+EXTT3=
+EXTT4=
+PLAYORDER=

@@ -1,0 +1,6 @@
+movetrack-01: returned code 1: mv /opt/arm/abcde.34038605/track01.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/01.Track 1.flac
+movetrack-02: returned code 1: mv /opt/arm/abcde.34038605/track02.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/02.Track 2.flac
+movetrack-03: returned code 1: mv /opt/arm/abcde.34038605/track03.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/03.Track 3.flac
+movetrack-04: returned code 1: mv /opt/arm/abcde.34038605/track04.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/04.Track 4.flac
+movetrack-05: returned code 1: mv /opt/arm/abcde.34038605/track05.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/05.Track 5.flac
+replaygain-flac: returned code 1: nice -n 10 metaflac --add-replay-gain /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/01.Track 1.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/02.Track 2.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/03.Track 3.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/04.Track 4.flac /mnt/media/ARM/Media/Music//flac/Unknown Artist/Unknown Album/05.Track 5.flac

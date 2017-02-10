@@ -12,6 +12,7 @@
  - Added Kodi support in config file
  - Added Kodi .nomedia creation in extras folder
  - Added Kodi notification support of ripping status
+ - Added beta key updater and automatic beta key installer
 
 ## v1.3.0
  - Get Title for DVD and Blu-Rays so that media servesr can identify them easily.

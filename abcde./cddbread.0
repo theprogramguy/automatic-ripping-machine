@@ -1,0 +1,16 @@
+# xmcd CD database file
+#
+# Track frame offsets:
+#
+# Disc length:  seconds
+#
+# Submitted via: cddb-tool 0.4.7
+#
+#blues,classical,country,data,folk,jazz,newage,reggae,rock,soundtrack,misc
+#CATEGORY=misc
+DISCID=
+DTITLE=Unknown Artist / Unknown Album
+DYEAR=
+DGENRE=
+EXTD=
+PLAYORDER=

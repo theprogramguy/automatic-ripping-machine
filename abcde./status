@@ -1,0 +1,11 @@
+abcde-version=2.7.2
+cddbmethod=cddb
+cddb-statcomplete
+cddb-querycomplete
+cddb-read-0-complete
+cddb-choice=0
+cddb-readcomplete
+variousartists=n
+variousartiststyle=forward
+cddb-edit
+encode-output=loud
